@@ -1,0 +1,15 @@
+{
+  "name": "PonySwap Exchange",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "PonySwap Exchange": {
+        "url": "https://api.bscgraph.org/subgraphs/name/ponyswap/exchange",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

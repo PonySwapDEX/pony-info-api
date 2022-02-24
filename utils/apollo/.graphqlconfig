@@ -1,0 +1,15 @@
+{
+  "name": "PonySwap Exchange Lite",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "PonySwap Exchange Lite": {
+        "url": "https://api.bscgraph.org/subgraphs/name/pony/exchange-lite",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
