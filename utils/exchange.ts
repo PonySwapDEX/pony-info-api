@@ -42,6 +42,8 @@ export async function getGlobalData(): Promise<GlobalData> {
     fetchPolicy: "network-only",
   });
 
+  console.log(currentResult.uniswapFactories[0].totalLiquidityBNB);
+
   if (currentResultErrors && currentResultErrors.length > 0) {
     throw new Error("Failed to fetch current uniswap factories from subgraph");
   }
@@ -77,9 +79,9 @@ export async function getGlobalData(): Promise<GlobalData> {
   data.total_liquidity_USD = currentData.totalLiquidityUSD;
   data.total_volume_BNB = currentData.totalVolumeBNB;
   data.total_volume_USD = currentData.totalVolumeUSD;
-  data.volume_BNB = oneDayVolumeBNB.toString();
-  data.volume_USD = oneDayVolumeUSD.toString();
-  data.tx_count = oneDayTxCount;
+  // data.volume_BNB = oneDayVolumeBNB.toString();
+  // data.volume_USD = oneDayVolumeUSD.toString();
+  // data.tx_count = oneDayTxCount;
 
   return data;
 }
