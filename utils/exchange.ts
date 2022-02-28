@@ -79,9 +79,9 @@ export async function getGlobalData(): Promise<GlobalData> {
   data.total_liquidity_USD = currentData.totalLiquidityUSD;
   data.total_volume_BNB = currentData.totalVolumeBNB;
   data.total_volume_USD = currentData.totalVolumeUSD;
-  // data.volume_BNB = oneDayVolumeBNB.toString();
-  // data.volume_USD = oneDayVolumeUSD.toString();
-  // data.tx_count = oneDayTxCount;
+  data.volume_BNB = oneDayVolumeBNB.toString();
+  data.volume_USD = oneDayVolumeUSD.toString();
+  data.tx_count = oneDayTxCount;
 
   return data;
 }
