@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "PonySwap Exchange": {
-        "url": "https://api.bscgraph.org/subgraphs/name/ponyswap/exchange",
+        "url": "https://api.thegraph.com/subgraphs/id/QmYP23nRuFUu8BvCzy6xtX2XPkpf5TwtHBhtpUt3DtKGW1",
         "headers": {
           "user-agent": "JS GraphQL"
         },
