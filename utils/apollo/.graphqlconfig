@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "PonySwap Exchange Lite": {
-        "url": "https://api.bscgraph.org/subgraphs/name/pony/exchange-lite",
+        "url": "https://api.thegraph.com/subgraphs/name/ponyfather/ponysubgraph",
         "headers": {
           "user-agent": "JS GraphQL"
         },

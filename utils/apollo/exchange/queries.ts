@@ -5,10 +5,10 @@ export const GLOBAL_DATA = gql`
     uniswapFactories(block: { number: $blockNumber }, where: { id: $factoryAddress }) {
       id
       totalVolumeUSD
-      totalVolumeETH
+      totalVolumeBNB
       untrackedVolumeUSD
       totalLiquidityUSD
-      totalLiquidityETH
+      totalLiquidityBNB
       txCount
       pairCount
     }
@@ -20,10 +20,10 @@ export const CURRENT_GLOBAL_DATA = gql`
     uniswapFactories(where: { id: $factoryAddress }) {
       id
       totalVolumeUSD
-      totalVolumeETH
+      totalVolumeBNB
       untrackedVolumeUSD
       totalLiquidityUSD
-      totalLiquidityETH
+      totalLiquidityBNB
       txCount
       pairCount
     }

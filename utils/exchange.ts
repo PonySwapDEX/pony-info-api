@@ -26,7 +26,7 @@ export async function getGlobalData(): Promise<GlobalData> {
   const oneDayAgoBlock = await getBlockFromTimestamp(
     epochSecond - 86400 - SKIP_BLOCKS * BLOCK_TIME
   );
-
+  
   if (!oneDayAgoBlock) {
     throw new Error("Failed to fetch blocks from the subgraph");
   }
@@ -66,16 +66,16 @@ export async function getGlobalData(): Promise<GlobalData> {
   const oneDayAgoData = oneDayAgoResult.uniswapFactories[0];
 
   const oneDayVolumeBNB =
-    parseFloat(currentData.totalVolumeETH) - parseFloat(oneDayAgoData.totalVolumeETH);
+    parseFloat(currentData.totalVolumeBNB) - parseFloat(oneDayAgoData.totalVolumeBNB);
   const oneDayVolumeUSD =
     parseFloat(currentData.totalVolumeUSD) - parseFloat(oneDayAgoData.totalVolumeUSD);
   const oneDayTxCount = parseInt(currentData.txCount) - parseInt(oneDayAgoData.txCount);
 
   // return data
   let data = <GlobalData>{};
-  data.total_liquidity_BNB = currentData.totalLiquidityETH;
+  data.total_liquidity_BNB = currentData.totalLiquidityBNB;
   data.total_liquidity_USD = currentData.totalLiquidityUSD;
-  data.total_volume_BNB = currentData.totalVolumeETH;
+  data.total_volume_BNB = currentData.totalVolumeBNB;
   data.total_volume_USD = currentData.totalVolumeUSD;
   data.volume_BNB = oneDayVolumeBNB.toString();
   data.volume_USD = oneDayVolumeUSD.toString();

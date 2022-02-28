@@ -6,7 +6,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
   try {
     const globalData = await getGlobalData();
     return200(res, { updated_at: new Date().getTime(), data: globalData });
-  } catch (error) {
+  } catch (error: any) {
     return500(res, error);
   }
 }

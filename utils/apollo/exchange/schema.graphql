@@ -6,7 +6,7 @@ schema {
 }
 
 type Bundle {
-    ethPrice: BigDecimal!
+    bnbPrice: BigDecimal!
     id: ID!
 }
 
@@ -60,7 +60,7 @@ type Pair {
     mints(first: Int = 100, orderBy: Mint_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Mint_filter): [Mint!]
     reserve0: BigDecimal!
     reserve1: BigDecimal!
-    reserveETH: BigDecimal!
+    reserveBNB: BigDecimal!
     reserveUSD: BigDecimal!
     swaps(first: Int = 100, orderBy: Swap_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Swap_filter): [Swap!]
     token0: Token!
@@ -68,7 +68,7 @@ type Pair {
     token1: Token!
     token1Price: BigDecimal!
     totalSupply: BigDecimal!
-    trackedReserveETH: BigDecimal!
+    trackedReserveBNB: BigDecimal!
     txCount: BigInt!
     volumeToken0: BigDecimal!
     volumeToken1: BigDecimal!
@@ -478,7 +478,7 @@ type Swap {
 type Token {
     allPairs(first: Int = 100, orderBy: Pair_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Pair_filter): [Pair!]
     decimals: BigInt!
-    derivedETH: BigDecimal
+    derivedBNB: BigDecimal
     id: ID!
     mostLiquidPairs(first: Int = 100, orderBy: PairDayData_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: PairDayData_filter): [PairDayData]!
     name: String!
@@ -491,7 +491,7 @@ type Token {
 
 type TokenDayData {
     dailyTxns: BigInt!
-    dailyVolumeETH: BigDecimal!
+    dailyVolumeBNB: BigDecimal!
     dailyVolumeToken: BigDecimal!
     dailyVolumeUSD: BigDecimal!
     date: Int!
@@ -500,7 +500,7 @@ type TokenDayData {
     mostLiquidPairs(first: Int = 100, orderBy: PairDayData_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: PairDayData_filter): [PairDayData!]!
     priceUSD: BigDecimal!
     token: Token!
-    totalLiquidityETH: BigDecimal!
+    totalLiquidityBNB: BigDecimal!
     totalLiquidityToken: BigDecimal!
     totalLiquidityUSD: BigDecimal!
 }
@@ -515,15 +515,15 @@ type Transaction {
 }
 
 type UniswapDayData {
-    dailyVolumeETH: BigDecimal!
+    dailyVolumeBNB: BigDecimal!
     dailyVolumeUSD: BigDecimal!
     date: Int!
     id: ID!
     maxStored: Int
     mostLiquidTokens(first: Int = 100, orderBy: TokenDayData_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: TokenDayData_filter): [TokenDayData!]!
-    totalLiquidityETH: BigDecimal!
+    totalLiquidityBNB: BigDecimal!
     totalLiquidityUSD: BigDecimal!
-    totalVolumeETH: BigDecimal!
+    totalVolumeBNB: BigDecimal!
     totalVolumeUSD: BigDecimal!
     txCount: BigInt!
 }
@@ -533,9 +533,9 @@ type UniswapFactory {
     mostLiquidTokens(first: Int = 100, orderBy: TokenDayData_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: TokenDayData_filter): [TokenDayData!]!
     pairCount: Int!
     pairs(first: Int = 100, orderBy: Pair_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Pair_filter): [Pair]!
-    totalLiquidityETH: BigDecimal!
+    totalLiquidityBNB: BigDecimal!
     totalLiquidityUSD: BigDecimal!
-    totalVolumeETH: BigDecimal!
+    totalVolumeBNB: BigDecimal!
     totalVolumeUSD: BigDecimal!
     untrackedVolumeUSD: BigDecimal!
     txCount: BigInt!
@@ -547,7 +547,7 @@ type User {
 }
 
 enum Bundle_orderBy {
-    ethPrice
+    bnbPrice
     id
 }
 
@@ -621,7 +621,7 @@ enum Pair_orderBy {
     mints
     reserve0
     reserve1
-    reserveETH
+    reserveBNB
     reserveUSD
     swaps
     token0
@@ -629,7 +629,7 @@ enum Pair_orderBy {
     token1
     token1Price
     totalSupply
-    trackedReserveETH
+    trackedReserveBNB
     txCount
     volumeToken0
     volumeToken1
@@ -653,7 +653,7 @@ enum Swap_orderBy {
 
 enum TokenDayData_orderBy {
     dailyTxns
-    dailyVolumeETH
+    dailyVolumeBNB
     dailyVolumeToken
     dailyVolumeUSD
     date
@@ -662,7 +662,7 @@ enum TokenDayData_orderBy {
     mostLiquidPairs
     priceUSD
     token
-    totalLiquidityETH
+    totalLiquidityBNB
     totalLiquidityToken
     totalLiquidityUSD
 }
@@ -670,7 +670,7 @@ enum TokenDayData_orderBy {
 enum Token_orderBy {
     allPairs
     decimals
-    derivedETH
+    derivedBNB
     id
     mostLiquidPairs
     name
@@ -691,15 +691,15 @@ enum Transaction_orderBy {
 }
 
 enum UniswapDayData_orderBy {
-    dailyVolumeETH
+    dailyVolumeBNB
     dailyVolumeUSD
     date
     id
     maxStored
     mostLiquidTokens
-    totalLiquidityETH
+    totalLiquidityBNB
     totalLiquidityUSD
-    totalVolumeETH
+    totalVolumeBNB
     totalVolumeUSD
     txCount
 }
@@ -709,9 +709,9 @@ enum UniswapFactory_orderBy {
     mostLiquidTokens
     pairCount
     pairs
-    totalLiquidityETH
+    totalLiquidityBNB
     totalLiquidityUSD
-    totalVolumeETH
+    totalVolumeBNB
     totalVolumeUSD
     txCount
 }
@@ -727,14 +727,14 @@ input Block_height {
 }
 
 input Bundle_filter {
-    ethPrice: BigDecimal
-    ethPrice_gt: BigDecimal
-    ethPrice_gte: BigDecimal
-    ethPrice_in: [BigDecimal!]
-    ethPrice_lt: BigDecimal
-    ethPrice_lte: BigDecimal
-    ethPrice_not: BigDecimal
-    ethPrice_not_in: [BigDecimal!]
+    bnbPrice: BigDecimal
+    bnbPrice_gt: BigDecimal
+    bnbPrice_gte: BigDecimal
+    bnbPrice_in: [BigDecimal!]
+    bnbPrice_lt: BigDecimal
+    bnbPrice_lte: BigDecimal
+    bnbPrice_not: BigDecimal
+    bnbPrice_not_in: [BigDecimal!]
     id: ID
     id_gt: ID
     id_gte: ID
@@ -1148,14 +1148,14 @@ input Pair_filter {
     reserve1_lte: BigDecimal
     reserve1_not: BigDecimal
     reserve1_not_in: [BigDecimal!]
-    reserveETH: BigDecimal
-    reserveETH_gt: BigDecimal
-    reserveETH_gte: BigDecimal
-    reserveETH_in: [BigDecimal!]
-    reserveETH_lt: BigDecimal
-    reserveETH_lte: BigDecimal
-    reserveETH_not: BigDecimal
-    reserveETH_not_in: [BigDecimal!]
+    reserveBNB: BigDecimal
+    reserveBNB_gt: BigDecimal
+    reserveBNB_gte: BigDecimal
+    reserveBNB_in: [BigDecimal!]
+    reserveBNB_lt: BigDecimal
+    reserveBNB_lte: BigDecimal
+    reserveBNB_not: BigDecimal
+    reserveBNB_not_in: [BigDecimal!]
     reserveUSD: BigDecimal
     reserveUSD_gt: BigDecimal
     reserveUSD_gte: BigDecimal
@@ -1216,14 +1216,14 @@ input Pair_filter {
     totalSupply_lte: BigDecimal
     totalSupply_not: BigDecimal
     totalSupply_not_in: [BigDecimal!]
-    trackedReserveETH: BigDecimal
-    trackedReserveETH_gt: BigDecimal
-    trackedReserveETH_gte: BigDecimal
-    trackedReserveETH_in: [BigDecimal!]
-    trackedReserveETH_lt: BigDecimal
-    trackedReserveETH_lte: BigDecimal
-    trackedReserveETH_not: BigDecimal
-    trackedReserveETH_not_in: [BigDecimal!]
+    trackedReserveBNB: BigDecimal
+    trackedReserveBNB_gt: BigDecimal
+    trackedReserveBNB_gte: BigDecimal
+    trackedReserveBNB_in: [BigDecimal!]
+    trackedReserveBNB_lt: BigDecimal
+    trackedReserveBNB_lte: BigDecimal
+    trackedReserveBNB_not: BigDecimal
+    trackedReserveBNB_not_in: [BigDecimal!]
     txCount: BigInt
     txCount_gt: BigInt
     txCount_gte: BigInt
@@ -1360,14 +1360,14 @@ input TokenDayData_filter {
     dailyTxns_lte: BigInt
     dailyTxns_not: BigInt
     dailyTxns_not_in: [BigInt!]
-    dailyVolumeETH: BigDecimal
-    dailyVolumeETH_gt: BigDecimal
-    dailyVolumeETH_gte: BigDecimal
-    dailyVolumeETH_in: [BigDecimal!]
-    dailyVolumeETH_lt: BigDecimal
-    dailyVolumeETH_lte: BigDecimal
-    dailyVolumeETH_not: BigDecimal
-    dailyVolumeETH_not_in: [BigDecimal!]
+    dailyVolumeBNB: BigDecimal
+    dailyVolumeBNB_gt: BigDecimal
+    dailyVolumeBNB_gte: BigDecimal
+    dailyVolumeBNB_in: [BigDecimal!]
+    dailyVolumeBNB_lt: BigDecimal
+    dailyVolumeBNB_lte: BigDecimal
+    dailyVolumeBNB_not: BigDecimal
+    dailyVolumeBNB_not_in: [BigDecimal!]
     dailyVolumeToken: BigDecimal
     dailyVolumeToken_gt: BigDecimal
     dailyVolumeToken_gte: BigDecimal
@@ -1434,14 +1434,14 @@ input TokenDayData_filter {
     token_not_in: [String!]
     token_not_starts_with: String
     token_starts_with: String
-    totalLiquidityETH: BigDecimal
-    totalLiquidityETH_gt: BigDecimal
-    totalLiquidityETH_gte: BigDecimal
-    totalLiquidityETH_in: [BigDecimal!]
-    totalLiquidityETH_lt: BigDecimal
-    totalLiquidityETH_lte: BigDecimal
-    totalLiquidityETH_not: BigDecimal
-    totalLiquidityETH_not_in: [BigDecimal!]
+    totalLiquidityBNB: BigDecimal
+    totalLiquidityBNB_gt: BigDecimal
+    totalLiquidityBNB_gte: BigDecimal
+    totalLiquidityBNB_in: [BigDecimal!]
+    totalLiquidityBNB_lt: BigDecimal
+    totalLiquidityBNB_lte: BigDecimal
+    totalLiquidityBNB_not: BigDecimal
+    totalLiquidityBNB_not_in: [BigDecimal!]
     totalLiquidityToken: BigDecimal
     totalLiquidityToken_gt: BigDecimal
     totalLiquidityToken_gte: BigDecimal
@@ -1473,14 +1473,14 @@ input Token_filter {
     decimals_lte: BigInt
     decimals_not: BigInt
     decimals_not_in: [BigInt!]
-    derivedETH: BigDecimal
-    derivedETH_gt: BigDecimal
-    derivedETH_gte: BigDecimal
-    derivedETH_in: [BigDecimal!]
-    derivedETH_lt: BigDecimal
-    derivedETH_lte: BigDecimal
-    derivedETH_not: BigDecimal
-    derivedETH_not_in: [BigDecimal!]
+    derivedBNB: BigDecimal
+    derivedBNB_gt: BigDecimal
+    derivedBNB_gte: BigDecimal
+    derivedBNB_in: [BigDecimal!]
+    derivedBNB_lt: BigDecimal
+    derivedBNB_lte: BigDecimal
+    derivedBNB_not: BigDecimal
+    derivedBNB_not_in: [BigDecimal!]
     id: ID
     id_gt: ID
     id_gte: ID
@@ -1595,14 +1595,14 @@ input Transaction_filter {
 }
 
 input UniswapDayData_filter {
-    dailyVolumeETH: BigDecimal
-    dailyVolumeETH_gt: BigDecimal
-    dailyVolumeETH_gte: BigDecimal
-    dailyVolumeETH_in: [BigDecimal!]
-    dailyVolumeETH_lt: BigDecimal
-    dailyVolumeETH_lte: BigDecimal
-    dailyVolumeETH_not: BigDecimal
-    dailyVolumeETH_not_in: [BigDecimal!]
+    dailyVolumeBNB: BigDecimal
+    dailyVolumeBNB_gt: BigDecimal
+    dailyVolumeBNB_gte: BigDecimal
+    dailyVolumeBNB_in: [BigDecimal!]
+    dailyVolumeBNB_lt: BigDecimal
+    dailyVolumeBNB_lte: BigDecimal
+    dailyVolumeBNB_not: BigDecimal
+    dailyVolumeBNB_not_in: [BigDecimal!]
     dailyVolumeUSD: BigDecimal
     dailyVolumeUSD_gt: BigDecimal
     dailyVolumeUSD_gte: BigDecimal
@@ -1639,14 +1639,14 @@ input UniswapDayData_filter {
     mostLiquidTokens_contains: [String!]
     mostLiquidTokens_not: [String!]
     mostLiquidTokens_not_contains: [String!]
-    totalLiquidityETH: BigDecimal
-    totalLiquidityETH_gt: BigDecimal
-    totalLiquidityETH_gte: BigDecimal
-    totalLiquidityETH_in: [BigDecimal!]
-    totalLiquidityETH_lt: BigDecimal
-    totalLiquidityETH_lte: BigDecimal
-    totalLiquidityETH_not: BigDecimal
-    totalLiquidityETH_not_in: [BigDecimal!]
+    totalLiquidityBNB: BigDecimal
+    totalLiquidityBNB_gt: BigDecimal
+    totalLiquidityBNB_gte: BigDecimal
+    totalLiquidityBNB_in: [BigDecimal!]
+    totalLiquidityBNB_lt: BigDecimal
+    totalLiquidityBNB_lte: BigDecimal
+    totalLiquidityBNB_not: BigDecimal
+    totalLiquidityBNB_not_in: [BigDecimal!]
     totalLiquidityUSD: BigDecimal
     totalLiquidityUSD_gt: BigDecimal
     totalLiquidityUSD_gte: BigDecimal
@@ -1655,14 +1655,14 @@ input UniswapDayData_filter {
     totalLiquidityUSD_lte: BigDecimal
     totalLiquidityUSD_not: BigDecimal
     totalLiquidityUSD_not_in: [BigDecimal!]
-    totalVolumeETH: BigDecimal
-    totalVolumeETH_gt: BigDecimal
-    totalVolumeETH_gte: BigDecimal
-    totalVolumeETH_in: [BigDecimal!]
-    totalVolumeETH_lt: BigDecimal
-    totalVolumeETH_lte: BigDecimal
-    totalVolumeETH_not: BigDecimal
-    totalVolumeETH_not_in: [BigDecimal!]
+    totalVolumeBNB: BigDecimal
+    totalVolumeBNB_gt: BigDecimal
+    totalVolumeBNB_gte: BigDecimal
+    totalVolumeBNB_in: [BigDecimal!]
+    totalVolumeBNB_lt: BigDecimal
+    totalVolumeBNB_lte: BigDecimal
+    totalVolumeBNB_not: BigDecimal
+    totalVolumeBNB_not_in: [BigDecimal!]
     totalVolumeUSD: BigDecimal
     totalVolumeUSD_gt: BigDecimal
     totalVolumeUSD_gte: BigDecimal
@@ -1706,14 +1706,14 @@ input UniswapFactory_filter {
     pairs_contains: [String!]
     pairs_not: [String!]
     pairs_not_contains: [String!]
-    totalLiquidityETH: BigDecimal
-    totalLiquidityETH_gt: BigDecimal
-    totalLiquidityETH_gte: BigDecimal
-    totalLiquidityETH_in: [BigDecimal!]
-    totalLiquidityETH_lt: BigDecimal
-    totalLiquidityETH_lte: BigDecimal
-    totalLiquidityETH_not: BigDecimal
-    totalLiquidityETH_not_in: [BigDecimal!]
+    totalLiquidityBNB: BigDecimal
+    totalLiquidityBNB_gt: BigDecimal
+    totalLiquidityBNB_gte: BigDecimal
+    totalLiquidityBNB_in: [BigDecimal!]
+    totalLiquidityBNB_lt: BigDecimal
+    totalLiquidityBNB_lte: BigDecimal
+    totalLiquidityBNB_not: BigDecimal
+    totalLiquidityBNB_not_in: [BigDecimal!]
     totalLiquidityUSD: BigDecimal
     totalLiquidityUSD_gt: BigDecimal
     totalLiquidityUSD_gte: BigDecimal
@@ -1722,14 +1722,14 @@ input UniswapFactory_filter {
     totalLiquidityUSD_lte: BigDecimal
     totalLiquidityUSD_not: BigDecimal
     totalLiquidityUSD_not_in: [BigDecimal!]
-    totalVolumeETH: BigDecimal
-    totalVolumeETH_gt: BigDecimal
-    totalVolumeETH_gte: BigDecimal
-    totalVolumeETH_in: [BigDecimal!]
-    totalVolumeETH_lt: BigDecimal
-    totalVolumeETH_lte: BigDecimal
-    totalVolumeETH_not: BigDecimal
-    totalVolumeETH_not_in: [BigDecimal!]
+    totalVolumeBNB: BigDecimal
+    totalVolumeBNB_gt: BigDecimal
+    totalVolumeBNB_gte: BigDecimal
+    totalVolumeBNB_in: [BigDecimal!]
+    totalVolumeBNB_lt: BigDecimal
+    totalVolumeBNB_lte: BigDecimal
+    totalVolumeBNB_not: BigDecimal
+    totalVolumeBNB_not_in: [BigDecimal!]
     totalVolumeUSD: BigDecimal
     totalVolumeUSD_gt: BigDecimal
     totalVolumeUSD_gte: BigDecimal

@@ -21,10 +21,11 @@ export const GET_BLOCK = gql`
  * @param timestamp epoch timestamp in seconds
  */
 export async function getBlockFromTimestamp(timestamp: number): Promise<string | undefined> {
+  const time = Number(new Date('05-06-2021').getTime()) / 1000;
   const result = await blockClient.query({
     query: GET_BLOCK,
     variables: {
-      timestamp: timestamp,
+      timestamp: time,//timestamp,
     },
     fetchPolicy: "cache-first",
   });
