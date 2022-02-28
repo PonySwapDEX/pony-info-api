@@ -22,10 +22,12 @@ export const SKIP_BLOCKS = 200;
 export const BLOCK_TIME = 3;
 
 export async function getGlobalData(): Promise<GlobalData> {
-  const epochSecond = Math.round(new Date().getTime() / 1000);
+  const epochSecond = Math.round(new Date().getTime() / 1000)   //Math.round(new Date().getTime() / 1000);
   const oneDayAgoBlock = await getBlockFromTimestamp(
     epochSecond - 86400 - SKIP_BLOCKS * BLOCK_TIME
   );
+
+  console.log(oneDayAgoBlock);
   
   if (!oneDayAgoBlock) {
     throw new Error("Failed to fetch blocks from the subgraph");
@@ -42,7 +44,7 @@ export async function getGlobalData(): Promise<GlobalData> {
     fetchPolicy: "network-only",
   });
 
-  console.log(currentResult.uniswapFactories[0].totalLiquidityBNB);
+  console.log(currentResult.uniswapFactories[0].totalVolumeBNB);
 
   if (currentResultErrors && currentResultErrors.length > 0) {
     throw new Error("Failed to fetch current uniswap factories from subgraph");
@@ -60,6 +62,8 @@ export async function getGlobalData(): Promise<GlobalData> {
     fetchPolicy: "network-only",
   });
 
+  console.log(oneDayAgoResult, oneDayAgoResultErrors)
+
   if (oneDayAgoResultErrors && oneDayAgoResultErrors.length > 0) {
     throw new Error("Failed to fetch one day ago uniswap factories from subgraph");
   }
@@ -67,6 +71,8 @@ export async function getGlobalData(): Promise<GlobalData> {
   const currentData = currentResult.uniswapFactories[0];
   const oneDayAgoData = oneDayAgoResult.uniswapFactories[0];
 
+  console.log(oneDayAgoData)
+  
   const oneDayVolumeBNB =
     parseFloat(currentData.totalVolumeBNB) - parseFloat(oneDayAgoData.totalVolumeBNB);
   const oneDayVolumeUSD =
