@@ -17,12 +17,12 @@ export type GlobalData = {
   volume_USD: string;
   tx_count: number;
 };
-export const FACTORY_ADDRESS = "0x670f55c6284c629c23baE99F585e3f17E8b9FC31";
+export const FACTORY_ADDRESS = "0x31d69130a63189578f28e28275C4f84B11d36720";
 export const SKIP_BLOCKS = 200;
 export const BLOCK_TIME = 3;
 
 export async function getGlobalData(): Promise<GlobalData> {
-  const epochSecond = Math.round(new Date().getTime() / 1000)   //Math.round(new Date().getTime() / 1000);
+  const epochSecond = Math.round(new Date("07-10-2021").getTime() / 1000)   //Math.round(new Date().getTime() / 1000);
   const oneDayAgoBlock = await getBlockFromTimestamp(
     epochSecond - 86400 - SKIP_BLOCKS * BLOCK_TIME
   );

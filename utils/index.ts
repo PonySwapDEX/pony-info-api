@@ -42,7 +42,8 @@ export async function getTokenByAddress(address: string): Promise<Token> {
 }
 
 export async function getTopPairs(): Promise<MappedDetailedPair[]> {
-  const epochSecond = Math.round(new Date().getTime() / 1000);
+  const epochSecond = Math.round(new Date("07-10-2021").getTime() / 1000);
+  console.log(`Fetching top pairs for epoch ${epochSecond}`);
   const firstBlock = await getBlockFromTimestamp(epochSecond - 86400);
 
   if (!firstBlock) {
